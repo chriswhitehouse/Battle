@@ -1,30 +1,34 @@
-require 'sinatra/base'
-require './lib/player.rb'
+require "sinatra/base"
+require "./lib/player.rb"
 
 class Battle < Sinatra::Base
-  set :session_secret, 'super secret'
+  set :session_secret, "super secret"
   enable :sessions
 
-  get '/' do
+  get "/" do
     erb :index
   end
 
-  post '/names' do
+  post "/names" do
     $player_1 = Player.new(params[:player_1_name])
     $player_2 = Player.new(params[:player_2_name])
-    redirect '/play'
+    redirect "/play"
   end
 
-  get '/play' do
+  get "/play" do
     @player_1_name = $player_1.name
     @player_2_name = $player_2.name
+    @player_2_hp = $player_2.hp
     erb :play
   end
 
-  get '/attack' do
-    @player_1_name = $player_1.name
-    @player_2_name = $player_2.name
-    erb :attack
+  get "/attack" do
+    # @player_1_name = $player_1.name
+    # @player_2_name = $player_2.name
+    $player_2.reduce_hp
+    # @player_2_hp = $player_2.hp
+
+    redirect "/play"
   end
 
   # start the server if ruby file executed directly
