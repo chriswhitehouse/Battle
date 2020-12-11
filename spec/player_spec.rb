@@ -8,12 +8,7 @@ describe Player do
   it "returning the HP" do
     expect(player_one.hp).to eq described_class::DEFAULT_HP
   end
-  describe "#Attack" do
-    it "damages the player" do
-      expect(player_two).to receive(:receive_damage)
-      player_one.attack(player_two)
-    end
-  end
+
   describe "#Receive_damage" do
     it "reduce the player HP" do
       expect { player_one.receive_damage }.to change { player_one.hp }.by(-described_class::REDUCE_HP)
