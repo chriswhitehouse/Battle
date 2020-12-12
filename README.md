@@ -2,49 +2,87 @@
 A small 'battle' web application game.
 
 ## Motivation
-A project to test the ability to pair program, TDD, OOD, in the web environment.
+A project to test the ability to pair program, TDD, OOD, in the web environment. Building an understanding of http request-response cycles, and MVC.
 
 ## Build status
-Just Started
+Partially completed.
+
+TO DO:
+
+* Switching Turns
+* Multiplayer
+* Losing & Winning
+* Killing the Global Variable
 
 ## Screenshots
 Include logo/demo screenshot etc.
 
 ## Tech/framework used
-Ex. -
-
-<b>Built with</b>
-- [Electron](https://electron.atom.io)
+Ruby, Sinatra web framework. With Rpsec unit testing and Capybara feature tests.
 
 ## Features
-What makes your project stand out?
+Attack the apposing player to reduce their health points.
 
 ## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+Controller:
+
+``` ruby
+require "sinatra/base"
+require "./lib/player"
+require "./lib/game"
+
+class Battle < Sinatra::Base
+  enable :sessions
+
+  get "/" do
+    erb :index
+  end
+
+  post "/names" do
+    player_1 = Player.new(params[:player_1_name])
+    player_2 = Player.new(params[:player_2_name])
+    $game = Game.new(player_1, player_2)
+    redirect "/play"
+  end
+
+  get "/play" do
+    @game = $game
+    erb :play
+  end
+
+  get "/attack" do
+    @game = $game
+    @game.attack(@game.player_2)
+    erb :attack
+  end
+
+  # start the server if ruby file executed directly
+  run! if app_file == $0
+end
+```
+
 
 ## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
-
-## API Reference
-
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+Run `bundle` in the terminal to install necessary gems from the Gemfile.
 
 ## Tests
-Describe and show how to run the tests with code examples.
+Feature tests:
+
+* see players names renders on screen
+* Player 1 can see Player 2 Hit points
+* reduce Player 2 HP by 10
+
+Unit tests:
+
+Player:
+* should return its name
+* returning the HP
+* #Receive_damage
+
+Game:
+* #player_1, retrieves the first player
+* #player_2, retrieves the second player
+* #Attack, damages the player
 
 ## How to use?
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
-
-## Contribute
-
-Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus.
-
-## Credits
-Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project.
-
-#### Anything else that seems useful
-
-## License
-A short snippet describing the license (MIT, Apache etc)
-
-MIT © [Yourname]()
+Run `rackup` from the command line. Enter player names. Player 1 can attack player 2.
