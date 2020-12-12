@@ -15,7 +15,10 @@ TO DO:
 * Killing the Global Variable
 
 ## Screenshots
-Include logo/demo screenshot etc.
+![Sign In](https://github.com/chriswhitehouse/Battle/blob/main/Screenshot%202020-12-12%20at%2017.19.45.png)
+![Play](https://github.com/chriswhitehouse/Battle/blob/main/Screenshot%202020-12-12%20at%2017.19.59.png)
+![Attack](https://github.com/chriswhitehouse/Battle/blob/main/Screenshot%202020-12-12%20at%2017.20.19.png)
+![Play Again](https://github.com/chriswhitehouse/Battle/blob/main/Screenshot%202020-12-12%20at%2017.20.33.png)
 
 ## Tech/framework used
 Ruby, Sinatra web framework. With Rpsec unit testing and Capybara feature tests.
