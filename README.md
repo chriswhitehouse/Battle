@@ -5,7 +5,7 @@ A small 'battle' web application game.
 A project to test the ability to pair program, TDD, OOD, in the web environment. Building an understanding of http request-response cycles, and MVC.
 
 ## Build status
-Partially completed.
+[![Build Status](https://travis-ci.com/chriswhitehouse/Battle.svg?branch=main)](https://travis-ci.com/chriswhitehouse/Battle)
 
 TO DO:
 
@@ -13,6 +13,9 @@ TO DO:
 * Multiplayer
 * Losing & Winning
 * Killing the Global Variable
+
+## Code style
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
 ## Screenshots
 ![Sign In](https://github.com/chriswhitehouse/Battle/blob/main/Screenshot%202020-12-12%20at%2017.19.45.png)
