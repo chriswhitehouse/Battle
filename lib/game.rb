@@ -7,15 +7,11 @@ class Game
   end
 
   def player_1
-    @players.first
+    players.first
   end
 
   def player_2
-    @players.last
-  end
-
-  def attack(player)
-    player.receive_damage
+    players.last
   end
 
   def current_turn
@@ -27,6 +23,10 @@ class Game
   end
 
   def opponent
-    @players.select { |n| n != @current_turn }.first
+    players.select { |n| n != @current_turn }.first
   end
+
+  private
+
+  attr_reader :players
 end

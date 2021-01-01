@@ -23,13 +23,6 @@ describe Game do
     end
   end
 
-  describe "#attack" do
-    it "damages the player" do
-      expect(player_2_double).to receive(:receive_damage)
-      game.attack(player_2_double)
-    end
-  end
-
   describe "#current_turn" do
     context "at the start of the game" do
       it "returns player 1" do
@@ -43,6 +36,14 @@ describe Game do
       it "returns player 2" do
         expect(game.switch_turns).to eq player_2_double
       end
+    end
+  end
+
+  describe "#opponent" do
+    it "returns opponent of current_turn" do
+      expect(game.opponent).to eq player_2_double
+      game.switch_turns
+      expect(game.opponent).to eq player_1_double
     end
   end
 end

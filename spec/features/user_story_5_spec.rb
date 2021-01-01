@@ -8,7 +8,7 @@ feature "5. So we can continue our game of Battle," do
     scenario "after player 1 attacks" do
       sign_in_and_play
       click_button "Attack"
-      click_link "OK"
+      click_button "OK"
       expect(page).not_to have_content "Player 1's turn"
       expect(page).to have_content "Player 2's turn"
     end
