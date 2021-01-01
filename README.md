@@ -101,6 +101,9 @@ As Player 1,
 So I can start to lose a game of Battle,
 I want Player 2's attack to reduce my HP by 10
 ```
+| Objects | Messages |
+|---|---|
+| player_1 | receive_damage |
 #### User Story 9
 ```
 As a Player,
