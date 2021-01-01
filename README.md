@@ -7,13 +7,6 @@ A project to test the ability to pair program, TDD, OOD, in the web environment.
 ## Build status
 [![Build Status](https://travis-ci.com/chriswhitehouse/Battle.svg?branch=main)](https://travis-ci.com/chriswhitehouse/Battle)
 
-TO DO:
-
-* Switching Turns
-* Multiplayer
-* Losing & Winning
-* Killing the Global Variable
-
 ## Code style
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
@@ -121,9 +114,14 @@ Controller:
 require "sinatra/base"
 require "./lib/player"
 require "./lib/game"
+require "./lib/attack"
 
 class Battle < Sinatra::Base
   enable :sessions
+
+  before do
+    @game = Game.instance
+  end
 
   get "/" do
     erb :index
@@ -132,48 +130,104 @@ class Battle < Sinatra::Base
   post "/names" do
     player_1 = Player.new(params[:player_1_name])
     player_2 = Player.new(params[:player_2_name])
-    $game = Game.new(player_1, player_2)
+    @game = Game.play(player_1, player_2)
     redirect "/play"
   end
 
   get "/play" do
-    @game = $game
     erb :play
   end
 
+  post "/attack" do
+    Attack.run(@game.opponent)
+    if @game.game_over?
+      redirect "/game-over"
+    else
+      redirect "/attack"
+    end
+  end
+
   get "/attack" do
-    @game = $game
-    @game.attack(@game.player_2)
     erb :attack
   end
 
+  post "/switch-turns" do
+    @game.switch_turns
+    redirect("/play")
+  end
+
+  get "/game-over" do
+    erb :game_over
+  end
+
   # start the server if ruby file executed directly
-  run! if app_file == $0
+  run! if app_file == $PROGRAM_NAME
 end
 ```
 
 
 ## Installation
+Fork and clone repository.
+
 Run `bundle` in the terminal to install necessary gems from the Gemfile.
 
 ## Tests
-Feature tests:
+### Feature tests:
 
-* see players names renders on screen
-* Player 1 can see Player 2 Hit points
-* reduce Player 2 HP by 10
+1. So we can play a personalised game of Battle,
+  We want to Start a fight by entering our Names and seeing them :white_check_mark
+2. So I can see how close I am to winning,
+  I want to see Player 2's Hit Points :white_check_mark
+3. So I can win a game of Battle,
+  I want to attack Player 2, and I want to get a confirmation :white_check_mark
+4. So I can start to win a game of Battle,
+  I want my attack to reduce Player 2's HP by 10 :white_check_mark
+5. So we can continue our game of Battle,
+  We want to switch turns
+    at the start of the game :white_check_mark
+    after player 1 attacks :white_check_mark
+6. So I can see how close I am to losing,
+  I want to see my own hit points :white_check_mark
+7. So I can lose a game of Battle,
+  I want Player 2 to attack me, and I want to get a confirmation :white_check_mark
+8. So I can start to lose a game of Battle,
+  I want Player 2's attack to reduce my HP by 10 :white_check_mark
+9. So I can Lose a game of Battle,
+  I want to see a 'Lose' message if I reach 0HP first :white_check_mark
 
-Unit tests:
+### Unit tests:
 
-Player:
-* should return its name
-* returning the HP
-* #Receive_damage
+* Attack
+  .run
+    damages the player
 
-Game:
-* #player_1, retrieves the first player
-* #player_2, retrieves the second player
-* #Attack, damages the player
+* Game
+  .play
+    should instantiate a Game object
+  #player_1
+    returns the first player
+  #player_2
+    returns the second player
+
+  #current_turn
+    at the start of the game
+      returns player 1
+  #switch_turns
+    after player 1 attacks
+      returns player 2
+  #opponent
+    returns opponent of current_turn
+  #game_over?
+    returns false if no-one is at 0HP
+    returns true if at least one player is at 0HP
+  #loser
+    returns a player on 0HP or lower
+
+* Player
+  #name
+    should return name
+  #hp
+    should return HP
 
 ## How to use?
-Run `rackup` from the command line. Enter player names. Player 1 can attack player 2.
+Run `rackup` from the command line. Enter player names. Take it in turns to attack until a player loses.

@@ -22,16 +22,14 @@ class Game
     players.last
   end
 
-  def current_turn
-    @current_turn
-  end
+  attr_reader :current_turn
 
   def switch_turns
     @current_turn = opponent
   end
 
   def opponent
-    players.select { |player| player != @current_turn }.first
+    players.reject { |player| player == @current_turn }.first
   end
 
   def game_over?
