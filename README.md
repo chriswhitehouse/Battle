@@ -27,7 +27,79 @@ TO DO:
 Ruby, Sinatra web framework. With Rpsec unit testing and Capybara feature tests.
 
 ## Features
-Attack the apposing player to reduce their health points.
+
+### User Stories
+
+#### User Story 1
+```
+As two Players,
+So we can play a personalised game of Battle,
+We want to Start a fight by entering our Names and seeing them
+```
+| Objects | Messages |
+|---|---|
+| Player | name |
+
+#### User Story 2
+```
+As Player 1,
+So I can see how close I am to winning
+I want to see Player 2's Hit Points
+```
+| Objects | Messages |
+|---|---|
+| Player | hp |
+#### User Story 3
+```
+As Player 1,
+So I can win a game of Battle,
+I want to attack Player 2, and I want to get a confirmation
+```
+| Objects | Messages |
+|---|---|
+| Game | attack |
+#### User Story 4
+```
+As Player 1,
+So I can start to win a game of Battle,
+I want my attack to reduce Player 2's HP by 10
+```
+| Objects | Messages |
+|---|---|
+| Player | receive_damage |
+#### User Story 5
+```
+As two Players,
+So we can continue our game of Battle,
+We want to switch turns
+```
+| Objects | Messages |
+|---|---|
+| Game | switch_turns |
+#### User Story 6
+```
+As Player 1,
+So I can see how close I am to losing,
+I want to see my own hit points
+```
+#### User Story 7
+```
+As Player 1,
+So I can lose a game of Battle,
+I want Player 2 to attack me, and I want to get a confirmation
+```
+#### User Story 8
+```
+As Player 1,
+So I can start to lose a game of Battle,
+I want Player 2's attack to reduce my HP by 10
+```
+#### User Story 9
+```
+As a Player,
+So I can Lose a game of Battle,
+I want to see a 'Lose' message if I reach 0HP first
+```
 
 ## Code Example
 Controller:

@@ -12,18 +12,18 @@ describe Game do
   #   expect(game).to be_instance_of described_class
   # end
   describe "#player_1" do
-    it "retrieves the first player" do
+    it "returns the first player" do
       expect(game.player_1).to eq player_1_double
     end
   end
 
   describe "#player_2" do
-    it "retrieves the second player" do
+    it "returns the second player" do
       expect(game.player_2).to eq player_2_double
     end
   end
 
-  describe "#Attack" do
+  describe "#attack" do
     it "damages the player" do
       expect(player_2_double).to receive(:receive_damage)
       game.attack(player_2_double)
