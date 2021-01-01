@@ -2,23 +2,11 @@
 <html>
 <head>
 <style>
-  div.title {
-    text-align: center;
-  }
 
-  div.player_1 {
-    text-align: left;
-  }
-
-  div.player_2 {
-    text-align: right;
-  }
 </style>
 </head>
 <body>
-<div class="title">
-<h2><%= @game.player_1.name %> attacked <%= @game.player_2.name %></h2>
-<div>
+<h2><%= @game.opponent.name %> attacked <%= @game.current_turn.name %></h2>
 <h3><a href="/play">OK</a></h3>
 
 </body>

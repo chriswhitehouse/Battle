@@ -92,6 +92,9 @@ As Player 1,
 So I can lose a game of Battle,
 I want Player 2 to attack me, and I want to get a confirmation
 ```
+| Objects | Messages |
+|---|---|
+| Game | attack(player_1) |
 #### User Story 8
 ```
 As Player 1,
