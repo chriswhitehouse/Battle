@@ -4,8 +4,8 @@ require "./lib/player.rb"
 require "game"
 
 describe Game do
-  let(:player_1_double) { double :player }
-  let(:player_2_double) { double :player }
+  let(:player_1_double) { double :player_1 }
+  let(:player_2_double) { double :player_2 }
   let(:game) { described_class.new(player_1_double, player_2_double) }
 
   # it "accepts two arg" do
@@ -27,6 +27,22 @@ describe Game do
     it "damages the player" do
       expect(player_2_double).to receive(:receive_damage)
       game.attack(player_2_double)
+    end
+  end
+
+  describe "#current_turn" do
+    context "at the start of the game" do
+      it "returns player 1" do
+        expect(game.current_turn).to eq player_1_double
+      end
+    end
+  end
+
+  describe "#switch_turns" do
+    context "after player 1 attacks" do
+      it "returns player 2" do
+        expect(game.switch_turns).to eq player_2_double
+      end
     end
   end
 end

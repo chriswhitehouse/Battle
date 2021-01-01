@@ -1,7 +1,33 @@
-<%= @game.player_1.name %> vs. <%= @game.player_2.name %>
-</br>
-<%= @game.player_2.name %>: <%= @game.player_2.hp %>HP
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.title {
+  text-align: center;
+}
 
+div.player_1 {
+  text-align: left;
+}
+
+div.player_2 {
+  text-align: right;
+}
+</style>
+</head>
+<body>
+
+<div class="title">
+<h1><%= @game.player_1.name %> vs. <%= @game.player_2.name %></h1>
+</div>
+</br>
+<div class="player_2">
+<h2><%= @game.player_2.name %>: <%= @game.player_2.hp %>HP</h2>
+</div>
+<h3><%= @game.current_turn.name %>'s turn:</h3>
 <form action="/attack">
   <input type="submit" value="Attack">
 </form>
+
+</body>
+</html>

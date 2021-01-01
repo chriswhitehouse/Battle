@@ -1,9 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  div.title {
+    text-align: center;
+  }
+
+  div.player_1 {
+    text-align: left;
+  }
+
+  div.player_2 {
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<div class="title">
 <h1>Battle!</h1>
+</div>
+
 <h2>Sign in to play</h2>
+
 <form action="/names" method="post">
   <label for="player_1">
     Player 1 name:
-   <input type="text" name="player_1_name">
+    <input type="text" name="player_1_name">
   </label>
   <label for="player_2">
     Player 2 name:
@@ -11,3 +34,6 @@
   </label>
    <input type="submit" value="Submit">
 </form>
+
+</body>
+</html>

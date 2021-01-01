@@ -18,10 +18,11 @@ TO DO:
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
 ## Screenshots
-![Sign In](https://github.com/chriswhitehouse/Battle/blob/main/Screenshot%202020-12-12%20at%2017.19.45.png)
-![Play](https://github.com/chriswhitehouse/Battle/blob/main/Screenshot%202020-12-12%20at%2017.19.59.png)
-![Attack](https://github.com/chriswhitehouse/Battle/blob/main/Screenshot%202020-12-12%20at%2017.20.19.png)
-![Play Again](https://github.com/chriswhitehouse/Battle/blob/main/Screenshot%202020-12-12%20at%2017.20.33.png)
+![Mock Up](https://github.com/chriswhitehouse/Battle/blob/main/screenshots/battle_final_mockup.png)
+![Sign In](https://github.com/chriswhitehouse/Battle/blob/main/screenshots/Screenshot%202020-12-12%20at%2017.19.45.png)
+![Play](https://github.com/chriswhitehouse/Battle/blob/main/screenshots/Screenshot%202020-12-12%20at%2017.19.59.png)
+![Attack](https://github.com/chriswhitehouse/Battle/blob/main/screenshots/Screenshot%202020-12-12%20at%2017.20.19.png)
+![Play Again](https://github.com/chriswhitehouse/Battle/blob/main/screenshots/Screenshot%202020-12-12%20at%2017.20.33.png)
 
 ## Tech/framework used
 Ruby, Sinatra web framework. With Rpsec unit testing and Capybara feature tests.
