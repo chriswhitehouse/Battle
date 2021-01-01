@@ -3,6 +3,7 @@ feature "4. So I can start to win a game of Battle," do
     sign_in_and_play
     click_button "Attack"
     click_link "OK"
-    expect(page).to have_content "Player 2: 50HP"
+    expect(page).to have_content "Player 2"
+    expect(page).to have_content "50HP"
   end
 end

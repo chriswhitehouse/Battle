@@ -49,7 +49,7 @@ I want to see Player 2's Hit Points
 ```
 | Objects | Messages |
 |---|---|
-| Player | hp |
+| player_2 | hp |
 #### User Story 3
 ```
 As Player 1,
@@ -58,7 +58,7 @@ I want to attack Player 2, and I want to get a confirmation
 ```
 | Objects | Messages |
 |---|---|
-| Game | attack |
+| Game | attack(player_2) |
 #### User Story 4
 ```
 As Player 1,
@@ -67,7 +67,7 @@ I want my attack to reduce Player 2's HP by 10
 ```
 | Objects | Messages |
 |---|---|
-| Player | receive_damage |
+| player_2 | receive_damage |
 #### User Story 5
 ```
 As two Players,
@@ -83,6 +83,9 @@ As Player 1,
 So I can see how close I am to losing,
 I want to see my own hit points
 ```
+| Objects | Messages |
+|---|---|
+| player_1 | hp |
 #### User Story 7
 ```
 As Player 1,
