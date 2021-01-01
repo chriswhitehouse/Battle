@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class Game
+  def self.play(player_1, player_2)
+    @game = new(player_1, player_2)
+  end
+
+  def self.instance
+    @game
+  end
+
   def initialize(player_1, player_2)
     @players = [player_1, player_2]
     @current_turn = player_1

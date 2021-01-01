@@ -12,6 +12,12 @@ describe Game do
   # it "accepts two arg" do
   #   expect(game).to be_instance_of described_class
   # end
+  describe ".play" do
+    it "should instantiate a Game object" do
+      expect(described_class.play(dead_player_double, player_2_double)).to be_instance_of Game
+    end
+  end
+
   describe "#player_1" do
     it "returns the first player" do
       expect(game.player_1).to eq player_1_double
