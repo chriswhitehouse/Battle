@@ -23,10 +23,22 @@ class Game
   end
 
   def opponent
-    players.select { |n| n != @current_turn }.first
+    players.select { |player| player != @current_turn }.first
+  end
+
+  def game_over?
+    losing_players.any?
+  end
+
+  def loser
+    losing_players.first
   end
 
   private
+
+  def losing_players
+    players.select { |player| player.hp <= 0 }
+  end
 
   attr_reader :players
 end

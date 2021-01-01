@@ -110,6 +110,9 @@ As a Player,
 So I can Lose a game of Battle,
 I want to see a 'Lose' message if I reach 0HP first
 ```
+| Objects | Messages |
+|---|---|
+| Game| lose |
 
 ## Code Example
 Controller:

@@ -4,10 +4,11 @@ require "./lib/player.rb"
 require "game"
 
 describe Game do
-  let(:player_1_double) { double :player_1 }
-  let(:player_2_double) { double :player_2 }
+  let(:player_1_double) { double :player_1, hp: 60 }
+  let(:player_2_double) { double :player_2, hp: 60 }
+  let(:dead_player_double) { double :dead_player, hp: 0 }
   let(:game) { described_class.new(player_1_double, player_2_double) }
-
+  let(:finished_game) { described_class.new(dead_player_double, player_2_double) }
   # it "accepts two arg" do
   #   expect(game).to be_instance_of described_class
   # end
@@ -44,6 +45,22 @@ describe Game do
       expect(game.opponent).to eq player_2_double
       game.switch_turns
       expect(game.opponent).to eq player_1_double
+    end
+  end
+
+  describe "#game_over?" do
+    it "returns false if no-one is at 0HP" do
+      expect(game.game_over?).to be false
+    end
+
+    it "returns true if at least one player is at 0HP" do
+      expect(finished_game.game_over?).to be true
+    end
+  end
+
+  describe "#loser" do
+    it "returns a player on 0HP or lower" do
+      expect(finished_game.loser).to eq dead_player_double
     end
   end
 end
